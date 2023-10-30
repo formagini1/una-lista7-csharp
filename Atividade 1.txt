@@ -1,0 +1,31 @@
+﻿using System;
+
+public class Exercises
+{
+    public static void Main(string[] args)
+    {
+        Exercise_02 exercise_02 = new Exercise_02();
+        Exercise_03 exercise_03 = new Exercise_03();
+        Exercise_04 exercise_04 = new Exercise_04();
+
+        Console.WriteLine("Escolha um Exercício:");
+        Console.WriteLine("- 2. Exercise 02");
+        Console.WriteLine("- 3. Exercise 03");
+        Console.WriteLine("- 4. Exercise 04");
+        
+        Console.WriteLine("Option: ");
+        string option = Console.ReadLine();
+
+        switch(option){
+            case "2":
+                exercise_02.run();
+                break;
+            case "3":
+                exercise_03.run();
+                break;
+            case "4":
+                exercise_04.run();
+                break;
+        }
+    }
+}

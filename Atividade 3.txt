@@ -1,0 +1,46 @@
+using System;
+
+public class Exercise_04
+{
+    public void run()
+    {
+        int[] vetor = { 1, 100, 30, 50, 11, 13, 5, 7, 78 };
+
+        Console.WriteLine("Vetor não ordenado:");
+        ImprimirVetor(vetor);
+
+        ShellSort(vetor);
+
+        Console.WriteLine("\nVetor ordenado com Shell Sort:");
+        ImprimirVetor(vetor);
+    }
+
+    static void ShellSort(int[] array)
+    {
+        int n = array.Length;
+        for (int gap = n / 2; gap > 0; gap /=2)
+        {
+            for (int i = gap; i < n; i++)
+            {
+                int temp = array[i];
+
+                int j;
+                for (j = i; j >= gap && array[j - gap] > temp; j -= gap)
+                {
+                    array[j] = array[j - gap];
+                }
+
+                array[j] = temp;
+            }
+        }
+    }
+
+    static void ImprimirVetor(int[] array)
+    {
+        foreach (int num in array)
+        {
+            Console.Write(num + " ");
+        }
+        Console.WriteLine();
+    }
+}

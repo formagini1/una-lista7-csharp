@@ -1,0 +1,148 @@
+1 - O que é uma lista e uma pilha em estrutura de dados.
+
+
+Uma estrutura de dados de lista utiliza o padrão FIFO (first-in-first-out), o primeiro a entrar é o primeiro a sair. 
+Sendo formados por um conjunto de nós que é uma estrutura que armazena informação.
+
+
+// Inicio da variavel nomes em um lista string
+var nomes = new List<string> { "Luís", "Ana" };
+
+// Percorre o array e imprime os valores
+foreach (var nome in nomes)
+{
+    Console.WriteLine("Oi, " + nome);
+}
+
+// Adiciona outro valor string no array
+nomes.Add("Pedro");
+Console.WriteLine("Nova Lista");
+
+// Percorre o array e imprime os novos valores
+foreach (var nome in nomes)
+{
+    Console.WriteLine("Oi, " + nome);
+}
+
+Console.ReadLine();
+
+
+
+Uma estrutura de dados de pilha é similiar a lista, porém ela utiliza o padrão LIFO (last-in-first-out), o ultimo a entrar é o primeiro a sair. 
+Também sendo formados por um conjunto de nós que é uma estrutura que armazena informação.
+
+// criando um array de pilha com valores int
+Stack<int> numeros = new Stack<int>();
+
+// Adicionano valores int na pilha
+numeros.Push(5);
+numeros.Push(10);
+numeros.Push(15);
+
+// Percorrendo o vetor e imprimindo os valores
+foreach (var numero in numeros)
+{
+    Console.WriteLine(numero);
+}
+
+// Removendo ultimo valor impresso na pilha
+numeros.Pop();
+
+Console.WriteLine("Nova lista");
+
+// Percorrendo o vetor e imprimindo os valores
+foreach (var numero in numeros)
+{
+    Console.WriteLine(numero);
+}
+
+Console.ReadLine();
+
+
+2 - Escreva um algoritmo em C# que implemente a lógica de ordenação por inserção do Insertion Sort.
+
+
+int[] vetor = { 1, 100, 30, 50, 11, 13, 5, 7, 78 };
+
+Console.WriteLine("Vetor original:");
+ImprimirVetor(vetor);
+
+InsertionSort(vetor);
+
+Console.WriteLine("Vetor ordenado:");
+ImprimirVetor(vetor);
+
+static void InsertionSort(int[] arr)
+{
+    int tamanhoVetor = arr.Length;
+
+    for (int i = 1; i < tamanhoVetor; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+
+        arr[j + 1] = key;
+    }
+}
+
+static void ImprimirVetor(int[] arr)
+{
+    foreach (int num in arr)
+    {
+        Console.Write(num + " ");
+    }
+    Console.WriteLine();
+}
+
+Console.ReadLine();
+
+
+
+3 -
+int[] vetor = { 1, 100, 30, 50, 11, 13, 5, 7, 78 };
+
+Console.WriteLine("Vetor original:");
+ImprimirVetor(vetor);
+
+ShellSort(vetor);
+
+Console.WriteLine("Vetor ordenado:");
+ImprimirVetor(vetor);
+
+Console.ReadLine();
+
+static void ShellSort(int[] arr)
+{
+    int tamanhoVetor = arr.Length;
+
+    for (int gap = tamanhoVetor / 2; gap > 0; gap /= 2)
+    {
+        for (int i = gap; i < tamanhoVetor; i++)
+        {
+            int temp = arr[i];
+
+            int j;
+            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
+            {
+                arr[j] = arr[j - gap];
+            }
+
+            arr[j] = temp;
+        }
+    }
+}
+
+static void ImprimirVetor(int[] arr)
+{
+    foreach (int num in arr)
+    {
+        Console.Write(num + " ");
+    }
+    Console.WriteLine();
+}
